@@ -1,0 +1,142 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  gravity 3.712
+}
+Viewpoint {
+  orientation -0.16743946542555876 -0.5682420534825321 -0.8056457000890394 0.2774377747963138
+  position -1.6967907455215374 10.098628574995017 3.385605590252348
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 2
+}
+UnevenTerrain {
+}
+Robot {
+  translation 0.009052853726568914 9.74984409787172 3.607639211923518
+  rotation -0.8536561854268645 0.28317667089139065 -0.4371293746081628 0.05625693356731092
+  children [
+    DEF wheel1_left_system Solid {
+      translation -0.35 0 0
+      rotation 1 0 0 1.5
+      children [
+        Solid {
+          translation 0 0 -0.45
+          children [
+            Shape {
+              appearance DamascusSteel {
+                colorOverride 1 0 0
+              }
+              geometry Sphere {
+                radius 0.025
+              }
+            }
+          ]
+          name "wheel1_left_system"
+        }
+        SliderJoint {
+          jointParameters JointParameters {
+            minStop -0.1
+            staticFriction 1
+          }
+          endPoint Solid {
+            children [
+              Shape {
+                appearance DamascusSteel {
+                }
+                geometry Cylinder {
+                  height 0.09
+                  radius 0.02
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+    DEF body Shape {
+      appearance HammeredCopper {
+      }
+      geometry Box {
+        size 0.7 0.5 0.2
+      }
+    }
+    Solid {
+      translation 0 0 0.19
+      children [
+        DEF panel Shape {
+          appearance SolarCell {
+          }
+          geometry Box {
+            size 0.8 0.5 0.01
+          }
+        }
+        Solid {
+          translation 0.3 -0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support1"
+        }
+        Solid {
+          translation 0.3 0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support2"
+        }
+        Solid {
+          translation -0.3 0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support3"
+        }
+        Solid {
+          translation -0.3 -0.19 -0.05
+          children [
+            Shape {
+              appearance Copper {
+              }
+              geometry Cylinder {
+                height 0.1
+                radius 0.02
+              }
+            }
+          ]
+          name "solar_panel_support4"
+        }
+      ]
+      name "Solar panel"
+    }
+  ]
+  boundingObject USE body
+  physics DEF phy Physics {
+    mass 1
+  }
+  controller "sd"
+  linearVelocity 1.4385268788785765e-07 4.374503406282536e-07 -2.265958590896844e-08
+  angularVelocity -1.5284739017764157e-08 -1.3126294193259778e-09 -7.286752138193138e-08
+}
